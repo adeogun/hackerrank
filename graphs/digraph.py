@@ -9,7 +9,7 @@ class DiGraph:
 
     def addEdge(self,V, W ):
         self.adj[V].append(W)
-        self.e = self.e + 2
+        self.e = self.e + 1
 
     def V(self):
         return self.v
