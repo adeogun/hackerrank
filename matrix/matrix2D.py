@@ -14,7 +14,7 @@ class Matrix2D:
     def getSubArrayColumn(self, column):
         col = [None] * self.dimension
         count = 0
-        for i in range(0, self.dimension):
+        for i in range(self.dimension):
             col[i] = self.array[i][column]
         return col
     
@@ -25,7 +25,19 @@ class Matrix2D:
     def addValue(self, row, col, value):
         self.array[row][col] = value    
 
+    def getDiagonalRight(self):
+        right = [None] * self.dimension
+        for i in range(self.dimension):
+            right[i] = self.array[i][self.dimension - i -1 ]
+        
+        return right
     
+    def getDiagonalLeft(self):
+        left = [None] * self.dimension
+        for i in range(self.dimension):
+            left[i] = self.array[i][i]
+            
+        return left
 
 ### USAGE        
 #matrix = Matrix2D(9)
@@ -60,3 +72,5 @@ class Matrix2D:
 #print(matrix.getSubMatrix(0,2,3,3))
 #print()
 #print(matrix.getSubMatrix(0,5,3,3))
+#print(matrix.getDiagonalLeft())
+#print(matrix.getDiagonalRight())
