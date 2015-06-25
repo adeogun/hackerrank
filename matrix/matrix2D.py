@@ -8,31 +8,30 @@ class Matrix2D:
     def __str__(self):
       return str(self.array)
         
-    def getSubArrayRow(self, row):
+    def get_sub_array_row(self, row):
         return self.array[row]
     
-    def getSubArrayColumn(self, column):
+    def get_sub_array_column(self, column):
         col = [None] * self.dimension
         count = 0
         for i in range(self.dimension):
             col[i] = self.array[i][column]
         return col
     
-    def getSubMatrix(self, startRow, startCol, height, width):
-        
+    def get_sub_matrix(self, startRow, startCol, height, width):
         return  [[self.array[i][j] for j in range(startRow, startRow + height)] for i in range(startCol, startCol + width)]
     
-    def addValue(self, row, col, value):
+    def add_value(self, row, col, value):
         self.array[row][col] = value    
 
-    def getDiagonalRight(self):
+    def get_diagonal_right(self):
         right = [None] * self.dimension
         for i in range(self.dimension):
             right[i] = self.array[i][self.dimension - i -1 ]
         
         return right
     
-    def getDiagonalLeft(self):
+    def get_diagonal_left(self):
         left = [None] * self.dimension
         for i in range(self.dimension):
             left[i] = self.array[i][i]

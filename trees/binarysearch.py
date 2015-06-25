@@ -4,7 +4,7 @@ class binarysearch:
         self.array = array
         self.array.sort()        
         
-    def searchRecursive(self, target, array):                
+    def search_recursive(self, target, array):
         if len(array) == 0:
             self.index = None
             return False        
@@ -15,15 +15,14 @@ class binarysearch:
             mid = (len(array) // 2)
             
         if target > array[mid]:            
-            return self.searchRecursive(target, array[mid + 1:])
+            return self.search_recursive(target, array[mid + 1:])
         if target < array[mid]:            
-            return self.searchRecursive(target, array[:mid])
+            return self.search_recursive(target, array[:mid])
         if target == array[mid]:
             return True
     
-    def searchRecuriveIndex(self, target, indexl, indexr, array):
-        
-        diff = indexr - indexl        
+    def search_recursive_index(self, target, indexl, indexr, array):
+        diff = indexr - indexl
             
         if diff == 1:
             if array[indexr] == target:
@@ -41,20 +40,20 @@ class binarysearch:
             return None       
         
         if target > array[mid] and indexl != indexr:             
-            return self.searchRecuriveIndex(target, mid + 1, indexr, array)
+            return self.search_recursive_index(target, mid + 1, indexr, array)
         if target < array[mid] and indexl != indexr:            
-            return self.searchRecuriveIndex(target, indexl,  mid - 1 , array)
+            return self.search_recursive_index(target, indexl,  mid - 1 , array)
         if target == array[mid]:
             return (mid, array[mid])
         if indexl == indexr:
             return None
         
-    def searchExists(self, target):                
-        return self.searchRecursive(target, self.array)
+    def search_exists(self, target):
+        return self.search_recursive(target, self.array)
     
         
-    def searchIndex(self, target):        
-        return self.searchRecuriveIndex(target, 0, len(self.array) - 1, self.array)
+    def search_index(self, target):
+        return self.search_recursive_index(target, 0, len(self.array) - 1, self.array)
         
 
     #b = binarysearch([1,2,3,4,5,6,7,8,9,10,11,12,13,14])

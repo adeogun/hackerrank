@@ -10,16 +10,16 @@ class Matrix2D:
     def __str__(self):
       return str(self.array)
         
-    def getSubArrayRow(self, row):
+    def get_sub_array_row(self, row):
         return self.array[ row, : ]
     
-    def getSubArrayColumn(self, col):
+    def get_sub_array_column(self, col):
         return self.array[ : ,col]
     
-    def getSubMatrix(self, startRow, startCol, height, width):
+    def get_sub_matrix(self, startRow, startCol, height, width):
         return self.array[startRow:startRow + width:,startCol:startCol + height:]
         
-    def addValue(self, row, col, value):
+    def add_value(self, row, col, value):
         self.array[row][col] = value    
 
 

@@ -22,7 +22,7 @@ class DiGraph:
         self.v = V
         self.adj =  [[] for _ in range(V)]
 
-    def addEdge(self,V, W, Weight ):
+    def add_edge(self,V, W, Weight ):
         edge = Edge(V, W, Weight)
         self.adj[V].append(edge)
         self.e = self.e + 1
@@ -38,11 +38,11 @@ class DFSClass:
     Depth first search
     """
     marked = []
-    edgeTo = []
+    edge_to = []
 
     def __init__(self, s, graph):
         self.marked = [False] * graph.V()
-        self.edgeTo = [None] * graph.V()
+        self.edge_to = [None] * graph.V()
         self.dfs(graph, s)
 
     def dfs(self, graph, s):
@@ -51,7 +51,7 @@ class DFSClass:
         for v in graph.adj[s]:
             v = v.e            
             if self.marked[v] == False:
-                self.edgeTo[v] = s
+                self.edge_to[v] = s
                 self.dfs(graph, v)
 
 class BFSClass:
@@ -59,11 +59,11 @@ class BFSClass:
     Breadth first search
     """
     marked = []
-    distTo = []
+    dist_to = []
 
     def __init__(self, graph):
         self.marked = [False] * graph.V()
-        self.distTo = [None] * graph.V()
+        self.dist_to = [None] * graph.V()
         self.bfs(graph)
 
     def bfs(self, graph):
@@ -72,7 +72,7 @@ class BFSClass:
         q.put(s)
         dist = 1
         self.marked[0] = True
-        self.distTo[0] = 0
+        self.dist_to[0] = 0
 
         for a in range(graph.V()):
             while q.empty() == False:
@@ -80,7 +80,7 @@ class BFSClass:
                 for v in graph.adj[s]:
                     v = v.e
                     if self.marked[v] == False:
-                        self.distTo[v] = self.distTo[s] + 1
+                        self.dist_to[v] = self.dist_to[s] + 1
                         self.marked[v] = True
                         q.put(v)
 
@@ -95,12 +95,12 @@ class Topological:
     Topological sort order
     """
     marked = []
-    edgeTo = []
+    edge_to = []
     stack = []
     
     def __init__(self, graph):
         self.marked = [False] * graph.V()
-        self.edgeTo = [None] * graph.V()
+        self.edge_to = [None] * graph.V()
         for i in range(0, graph.v):
             if(self.marked[i] == False):
                 self.dfs(graph, i)
@@ -112,7 +112,7 @@ class Topological:
             v = v.e
             print("V {0} E {1}".format(s, v))
             if self.marked[v] == False:
-                self.edgeTo[v] = s
+                self.edge_to[v] = s
                 self.dfs(graph, v)
                 
         self.stack.append(s)
